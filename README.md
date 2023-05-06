@@ -1,5 +1,5 @@
 # H5Attr
-H5Attr: Quick access to hdf5 data via attributes, allowing `group.key` instead of `group['key']` and IPython/Jupyter tab completion.
+H5Attr: Quick access to hdf5 data via attributes, allowing `group.dataset` (equivalent to `group['dataset']`) and IPython/Jupyter tab completion.
 
 ## Installation
 
@@ -58,15 +58,12 @@ f.a  # array([3, 4])
 
 ## API
 `H5Attr(path, lazy=True, **args)`
-
 - Parameters
-    - `path`: h5py Group, file path, or file-like object.
+    - `path`: h5py group, file path, or file-like object.
     - `lazy`: bool, if true, dataset[()] will be returned.
-    - `args`: additional arguments used for opening HDF5 file.
-
+    - `args`: additional arguments used for opening h5py file.
 - Properties
     - `_attrs`: access to the h5py attrs dict.
-
 - Methods
     - `_close()`: close the h5py file if applicable.
     - `_show()`: show a summary of the h5py group.
