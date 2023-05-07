@@ -4,9 +4,8 @@ H5Attr: Quick access to hdf5 data via attributes, allowing `group.dataset` (equi
 ## Installation
 
 ```bash
-pip install h5attr
+pip install git+https://github.com/syrte/h5attr
 ```
-[not available yet]
 
 ## Usage
 ```
