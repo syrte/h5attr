@@ -9,7 +9,7 @@ pip install git+https://github.com/syrte/h5attr
 
 ## Usage
 ```
-# create example HDF5 file
+# create example HDF5 file for this guide
 import h5py, io
 file = io.BytesIO()
 with h5py.File(file, 'w') as fp:
@@ -17,6 +17,9 @@ with h5py.File(file, 'w') as fp:
     fp['a'] = [3, 4]
     fp['b/c'] = 5
     fp.attrs['d'] = 's'
+
+# import package
+from h5attr import H5Attr
 
 # open file
 f = H5Attr(file)
