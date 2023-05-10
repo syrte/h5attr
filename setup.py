@@ -10,7 +10,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/syrte/h5attr/',
-    keywords=['Fortran', 'Numpy'],
+    keywords=['HDF5', 'h5py'],
     author='Syrtis Major',
     author_email='styr.py@gmail.com',
     py_modules=['h5attr'],
