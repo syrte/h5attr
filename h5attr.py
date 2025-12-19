@@ -6,17 +6,16 @@ H5Attr: Quick access to hdf5 data via attributes,
 Author: Syrtis Major (styr.py@gmail.com)
 """
 
-
 import h5py
 import numpy as np
 import pathlib
 from collections.abc import Mapping
 
-__all__ = ['H5Attr']
+__all__ = ["H5Attr"]
 
 
-class H5Attr():
-    '''Quick access to hdf5 data via attributes,
+class H5Attr:
+    """Quick access to hdf5 data via attributes,
     allowing `group.key` instead of `group['key']`
     and IPython/Jupyter tab completion.
 
@@ -67,7 +66,7 @@ class H5Attr():
 
     f = H5Attr(file, lazy=False)
     f.a  # array([3, 4])
-    '''
+    """
 
     def __init__(self, path, lazy=True, **args):
         """
@@ -91,7 +90,7 @@ class H5Attr():
         else:
             if isinstance(path, (str, pathlib.Path)):
                 path = pathlib.Path(path).expanduser()
-            self.__data = h5py.File(path, mode='r', **args)
+            self.__data = h5py.File(path, mode="r", **args)
 
         self.__lazy = lazy
 
@@ -100,14 +99,10 @@ class H5Attr():
             return "Closed H5Attr object"  # for closed file
         elif isinstance(self.__data, h5py.Group):
             return "H5Attr\n file: {file}\n name: {name}\n keys: {keys}".format(
-                file=self.__data.file.filename,
-                name=self.__data.name,
-                keys=", ".join(self.__data)
+                file=self.__data.file.filename, name=self.__data.name, keys=", ".join(self.__data)
             )
         else:
-            return "H5Attr\n keys: {keys}".format(
-                keys=", ".join(self.__data)
-            )
+            return "H5Attr\n keys: {keys}".format(keys=", ".join(self.__data))
 
     def __dir__(self):
         if not self.__data._id.valid:
@@ -155,13 +150,13 @@ class H5Attr():
 
     @property
     def _attrs(self):
-        if hasattr(self.__data, 'attrs'):
+        if hasattr(self.__data, "attrs"):
             return H5Attr(self.__data.attrs)
         else:
             return H5Attr({})
 
     def _close(self):
-        self.__data.close()
+        self.__data.file.close()
 
     def _show(self):
         for key, value in self.__data.items():
